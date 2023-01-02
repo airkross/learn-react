@@ -12,7 +12,7 @@ const PostItem: React.FC<IProps> = ({ id, title, description, whenClickDeletePos
                 <div>{title}</div>
                 <div>{description}</div>
             </div>
-            <CustomButton onClick={() => whenClickDeletePost?.(id)}>
+            <CustomButton onClick={() => whenClickDeletePost(id)}>
                 Удалить
             </CustomButton>
         </div>
