@@ -1,7 +1,5 @@
-import { IProps as InitialValues } from '@components/app-components/post-item/types'
-
-export { type InitialValues }
+import { IPostItem } from '~/App'
 
 export interface IProps {
-    whenSubmit?: (e: InitialValues) => void
+    whenSubmit?: (e: IPostItem) => void
 }

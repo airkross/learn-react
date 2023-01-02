@@ -1,5 +1,5 @@
-export interface IProps {
-    id: number
-    title: string
-    description: string
+import { IPostItem } from "~/App";
+
+export interface IProps extends IPostItem {
+    whenClickDeletePost: (postId: IPostItem['id']) => void
 }

@@ -1,22 +1,29 @@
 import React, { useState } from 'react'
+import { IPostItem } from '~/App'
 
 import CommonForm from '../../common/common-form'
 import CustomButton from '../../common/custom-button'
 import CustomInput from '../../common/custom-input'
 import CustomTextarea from '../../common/custom-textarea'
 import CommonFormField from '../../common/common-form/components/common-form-field'
-
-import { initialValues } from './constants'
-import { InitialValues, IProps } from './types'
+import { IProps } from './types'
 import styles from './styles.module.css'
 
 const CreatePostForm: React.FC<IProps> = ({ whenSubmit }) => {
-    const [ formValues, setValues ] = useState<InitialValues>(initialValues)
+    const [ formValues, setValues ] = useState<IPostItem>(getInitialValue())
+
+    function getInitialValue(): IPostItem {
+        return {
+            title: '',
+            description: '',
+            id: new Date().valueOf()
+        }
+    }
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         whenSubmit?.(formValues)
-        setValues(initialValues)
+        setValues(getInitialValue())
     }
 
     return (

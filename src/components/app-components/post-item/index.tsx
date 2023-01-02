@@ -4,7 +4,7 @@ import CustomButton from '../../common/custom-button';
 import styles from './styles.module.css';
 import { IProps } from './types';
 
-const PostItem: React.FC<IProps> = ({ id, title, description }) => {
+const PostItem: React.FC<IProps> = ({ id, title, description, whenClickDeletePost }) => {
     return (
         <div className={styles.postItem}>
             <div>
@@ -12,7 +12,7 @@ const PostItem: React.FC<IProps> = ({ id, title, description }) => {
                 <div>{title}</div>
                 <div>{description}</div>
             </div>
-            <CustomButton>
+            <CustomButton onClick={() => whenClickDeletePost?.(id)}>
                 Удалить
             </CustomButton>
         </div>

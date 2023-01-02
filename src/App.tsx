@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import PostList from './components/app-components/post-list';
-import { IProps as IPostListItem } from './components/app-components/post-list/types'
 import CreatePostForm from './components/app-components/create-post-form';
 
-function App() {
-  const [ posts ] = useState<IPostListItem['posts']>([
+// Fake Data (Mock Data)
+export interface IPostItem {
+  id: number
+  title: string
+  description: string
+}
+
+export interface IPostListItems {
+  posts: Array<IPostItem>
+}
+
+const responseData: IPostListItems = {
+  posts: [
     {
       id: 1,
       title: 'Учу React',
@@ -25,18 +35,32 @@ function App() {
       title: 'Учу React',
       description: 'React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.',
     },
-  ])
+  ]
+}
+
+function App() {
+  const [ posts, setPosts ] = useState<IPostListItems['posts']>(responseData.posts)
+
+  function handleSubmitAddPostForm(post: IPostItem) {
+    setPosts([...posts, post])
+  }
+
+  function handleClickDeletePost(postId: IPostItem['id']) {
+    setPosts(posts.filter((post) => post.id !== postId))
+  }
+
   return (
-    <div className="App">
-        <CreatePostForm 
-          whenSubmit={(event) => {
-            console.log(event)
-          }}
-        />
-        <PostList 
-          posts={posts}
-        />
-    </div>
+    <React.StrictMode>
+      <div className="App">
+          <CreatePostForm 
+            whenSubmit={handleSubmitAddPostForm}
+          />
+          <PostList 
+            posts={posts}
+            whenClickDeletePost={handleClickDeletePost}
+          />
+      </div>
+    </React.StrictMode>
   );
 }
 

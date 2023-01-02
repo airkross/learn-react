@@ -1,5 +1,7 @@
-import { IProps as IPostItem} from "@components/app-components/post-item/types"
+import { IProps as IPostItemProps } from "@components/app-components/post-item/types"
+import { IPostListItems } from "~/App"
 
 export interface IProps {
-    posts: Array<IPostItem>
+    posts: IPostListItems['posts']
+    whenClickDeletePost: IPostItemProps['whenClickDeletePost']
 }
