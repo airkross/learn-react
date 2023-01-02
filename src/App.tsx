@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import './App.css';
 import PostList from './components/app-components/post-list';
-import { IProps as IPostItem } from './components/app-components/post-item/types'
+import { IProps as IPostListItem } from './components/app-components/post-list/types'
 import CreatePostForm from './components/app-components/create-post-form';
 
-
 function App() {
-  const [ posts ] = useState<Array<IPostItem>>([
+  const [ posts ] = useState<IPostListItem['posts']>([
     {
       id: 1,
       title: 'Учу React',

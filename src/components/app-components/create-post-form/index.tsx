@@ -4,11 +4,11 @@ import CommonForm from '../../common/common-form'
 import CustomButton from '../../common/custom-button'
 import CustomInput from '../../common/custom-input'
 import CustomTextarea from '../../common/custom-textarea'
+import CommonFormField from '../../common/common-form/components/common-form-field'
 
-import { initialValues, validationSchema } from './constants'
+import { initialValues } from './constants'
 import { InitialValues, IProps } from './types'
 import styles from './styles.module.css'
-import CommonFormField from '../../common/common-form/components/common-form-field'
 
 const CreatePostForm: React.FC<IProps> = ({ whenSubmit }) => {
     const [ formValues, setValues ] = useState<InitialValues>(initialValues)

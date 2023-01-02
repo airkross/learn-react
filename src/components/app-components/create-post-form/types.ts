@@ -1,6 +1,4 @@
-import { InferType } from '@helpers/validator'
-
-import { IProps as InitialValues } from '../post-item/types'
+import { IProps as InitialValues } from '@components/app-components/post-item/types'
 
 export { type InitialValues }
 
