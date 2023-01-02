@@ -1,0 +1,4 @@
+.commonForm {
+    display: flex;
+    flex-direction: column;
+}

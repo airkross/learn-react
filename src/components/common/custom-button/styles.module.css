@@ -1,0 +1,17 @@
+.customButton {
+    background: none;
+    height: 30px;
+    min-width: 100px;
+    padding: 4px 8px;
+    border: 2px solid rgb(113, 167, 113);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.customButton:hover {
+    background: rgb(248, 255, 248);
+}
+
+.customButton:active {
+    border: 2px solid rgba(113, 167, 113, .5);
+}
