@@ -8,8 +8,10 @@
     ],
     "baseUrl": "src",
     "paths": {
-      "@helpers/*": ["helpers/*"],
-      "@components/*": ["components/*"]
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "@components": ["./components"],
+      "@components/*": ["./components/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,
