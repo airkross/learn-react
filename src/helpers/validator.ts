@@ -32,4 +32,4 @@ declare module 'yup' {
     }
  }
  
- export { string, ValidationError, InferType, array, object, date, number, boolean, mixed } from 'yup'
+ export { string, type ValidationError, type InferType, array, object, date, number, boolean, mixed } from 'yup'
