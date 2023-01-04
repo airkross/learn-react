@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 
 import styles from './styles.module.css'
 
-const HiddenSubmitButton: React.FC = () => {
+const HiddenSubmitButton: FC = () => {
   return (
     <button
         type={'submit'}

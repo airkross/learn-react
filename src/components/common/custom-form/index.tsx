@@ -1,12 +1,12 @@
-import React from 'react'
+import { FC } from 'react'
 import HiddenSubmitButton from './components/hidden-submit-button'
 
 import styles from './styles.module.css'
 import { IProps } from './types'
 
-const CommonForm: React.FC<IProps> = ({ children, isShownHiddenButton, ...props }) => {
+const CustomForm: FC<IProps> = ({ children, isShownHiddenButton, ...props }) => {
   return (
-    <form className={styles.commonForm} {...props}>
+    <form className={styles.customForm} {...props}>
         {
             children
         }
@@ -17,4 +17,4 @@ const CommonForm: React.FC<IProps> = ({ children, isShownHiddenButton, ...props 
   )
 }
 
-export default CommonForm
+export default CustomForm

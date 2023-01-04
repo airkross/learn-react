@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 import CustomButton from '../../common/custom-button';
 
 import styles from './styles.module.css';
 import { IProps } from './types';
 
-const PostItem: React.FC<IProps> = ({ id, title, description, whenClickDeletePost }) => {
+const PostItem: FC<IProps> = ({ id, title, description, whenClickDeletePost }) => {
     return (
         <div className={styles.postItem}>
             <div>

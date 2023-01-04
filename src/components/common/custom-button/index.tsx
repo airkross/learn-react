@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 
 import styles from './styles.module.css'
 
-const CustomButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({children, ...props}) => {
+const CustomButton: FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({children, ...props}) => {
   return (
     <button className={styles.customButton} {...props}>
         {

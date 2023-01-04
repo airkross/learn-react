@@ -1,26 +1,19 @@
-import React, { useState } from 'react'
+import { FC, useState } from 'react'
 import { IPostItem } from '~/App'
 
-import CommonForm from '../../common/common-form'
+import CustomForm from '../../common/custom-form'
 import CustomButton from '../../common/custom-button'
 import CustomInput from '../../common/custom-input'
 import CustomTextarea from '../../common/custom-textarea'
-import CommonFormField from '../../common/common-form/components/common-form-field'
+import CustomFormField from '../../common/custom-form/components/custom-form-field'
 import { IProps } from './types'
 import styles from './styles.module.css'
+import { getInitialValue } from './constants'
 
-const CreatePostForm: React.FC<IProps> = ({ whenSubmit }) => {
+const CreatePostForm: FC<IProps> = ({ whenSubmit }) => {
     const [ formValues, setValues ] = useState<IPostItem>(getInitialValue())
 
-    function getInitialValue(): IPostItem {
-        return {
-            title: '',
-            description: '',
-            id: new Date().valueOf()
-        }
-    }
-
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>  {
         e.preventDefault()
         whenSubmit?.(formValues)
         setValues(getInitialValue())
@@ -28,11 +21,11 @@ const CreatePostForm: React.FC<IProps> = ({ whenSubmit }) => {
 
     return (
         <div className={styles.createPostForm}>
-            <CommonForm
+            <CustomForm
                 onSubmit={handleSubmit}
                 isShownHiddenButton
             >
-                <CommonFormField
+                <CustomFormField
                     name='title'
                 >
                     <CustomInput
@@ -41,8 +34,8 @@ const CreatePostForm: React.FC<IProps> = ({ whenSubmit }) => {
                         value={formValues.title}
                         onChange={(e) => setValues({...formValues, title: e.target.value})} 
                     />
-                </CommonFormField>
-                <CommonFormField
+                </CustomFormField>
+                <CustomFormField
                     name='discription'
                 >
                     <CustomTextarea
@@ -50,11 +43,11 @@ const CreatePostForm: React.FC<IProps> = ({ whenSubmit }) => {
                         value={formValues.description}
                         onChange={(e) => setValues({...formValues, description: e.target.value})} 
                     />
-                </CommonFormField>
+                </CustomFormField>
                 <CustomButton>
                     Добавить пост
                 </CustomButton>
-            </CommonForm>
+            </CustomForm>
         </div>
     )
 }
