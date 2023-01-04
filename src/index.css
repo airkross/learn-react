@@ -32,4 +32,8 @@ code {
   --globalGreenColorDark: rgb(113, 167, 113);
   --globalGreenColorMedium: rgb(182, 210, 182);
   --globalGreenColorLight: rgb(248, 255, 248);
+
+  /* z-layers */
+  --z-modal: 100;
+  --z-dropdown: 10;
 }
