@@ -1,0 +1,15 @@
+.infoBox {
+    width: 100%;
+    border: 2px solid var(--globalGreenColorDark);
+    border-radius: var(--border-radius);
+    min-height: 40px;
+    padding: 8px 16px;
+}
+
+.gap {
+    margin-bottom: 8px;
+}
+
+.gap:last-child {
+    margin-bottom: 0;
+}
