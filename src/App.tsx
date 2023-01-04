@@ -41,11 +41,11 @@ const responseData: IPostListItems = {
 function App() {
   const [ posts, setPosts ] = useState<IPostListItems['posts']>(responseData.posts)
 
-  function handleSubmitAddPostForm(post: IPostItem) {
+  const handleSubmitAddPostForm = (post: IPostItem) => {
     setPosts([...posts, post])
   }
 
-  function handleClickDeletePost(postId: IPostItem['id']) {
+  const handleClickDeletePost = (postId: IPostItem['id']) => {
     setPosts(posts.filter((post) => post.id !== postId))
   }
 
