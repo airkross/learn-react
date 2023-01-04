@@ -3,15 +3,15 @@
     height: 30px;
     min-width: 100px;
     padding: 4px 8px;
-    border: 2px solid rgb(113, 167, 113);
+    border: 2px solid var(--globalGreenColorDark);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .customButton:hover {
-    background: rgb(248, 255, 248);
+    background: var(--globalGreenColorLight);
 }
 
 .customButton:active {
-    border: 2px solid rgba(113, 167, 113, .5);
+    border: 2px solid var(--globalGreenColorMedium);
 }

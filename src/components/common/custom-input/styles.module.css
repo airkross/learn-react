@@ -3,6 +3,6 @@
     height: 30px;
     width: 100%;
     padding: 4px 8px;
-    border: 2px solid rgb(113, 167, 113);
+    border: 2px solid var(--globalGreenColorDark);
     border-radius: 5px;
 }

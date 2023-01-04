@@ -17,3 +17,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  /* White colors */
+  --globalWhiteColor: rgb(255, 255, 255);
+
+  /* Black colors*/
+  --globalBlackColor: rgb(0, 0, 0);
+
+  /* Grey colors */
+  --globalGreyColor: rgb(128, 128, 128);
+
+  /* Green colors */
+  --globalGreenColorDark: rgb(113, 167, 113);
+  --globalGreenColorMedium: rgb(182, 210, 182);
+  --globalGreenColorLight: rgb(248, 255, 248);
+}
