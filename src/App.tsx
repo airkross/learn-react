@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
 import PostList from './components/app-components/post-list';
 import { IProps as ICustomSelect } from './components/common/custom-select/types'
@@ -6,6 +6,7 @@ import PostFilter from './components/app-components/post-filter';
 import CreatePostModal from './components/app-components/create-post-modal';
 import CustomButton from './components/common/custom-button';
 import styles from './styles.module.css'
+import { useSortedAndSerchedPosts } from './custom-hooks/use-posts';
 
 // Fake Data (Mock Data)
 export interface IPostItem {
@@ -33,7 +34,7 @@ const responseData: IPostListItems = {
   ]
 }
 
-const enum optionValues {
+export const enum optionValues {
   EMPTY = '',
   TITLE = 'title',
   ID = 'id',
@@ -58,29 +59,7 @@ function App() {
   const [ posts, setPosts ] = useState<IPostListItems['posts']>(responseData.posts)
   const [ filter, setFilter ] = useState({ sort: '', query: '' })
   const [ shownModal, setIsShownModal ] = useState(false)
-
-
-  const sortedPosts = useMemo(() => {
-    if(!filter.sort) {
-      return posts
-    }
-
-    switch(filter.sort) {
-      case optionValues.ID: {
-        return [...posts].sort((a, b) => a[filter.sort as 'id'] - b[filter.sort as 'id'])
-      }
-      case optionValues.TITLE: {
-        return [...posts].sort((a, b) => a[filter.sort as 'title'].localeCompare(b[filter.sort as 'title']))
-      }
-      default: {
-        return responseData.posts
-      }
-    }
-  }, [filter.sort, posts])
-
-  const sortedAndSerchingPosts = useMemo(() => {
-    return sortedPosts?.filter((post) => post.title.toLocaleLowerCase().includes(filter.query.toLocaleLowerCase()))
-  }, [filter.query, sortedPosts])
+  const sortedAndSerchedPosts = useSortedAndSerchedPosts(posts, filter.sort, filter.query)
 
   const handleCreatePost = (post: IPostItem) => {
     setIsShownModal(false)
@@ -110,7 +89,7 @@ function App() {
             options={options}
           />
           <PostList 
-            posts={sortedAndSerchingPosts}
+            posts={sortedAndSerchedPosts}
             whenClickDeletePost={handleClickDeletePost}
           />
       </div>
