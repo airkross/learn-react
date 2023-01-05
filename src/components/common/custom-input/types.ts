@@ -1,0 +1,1 @@
+export type CustomInputType = React.InputHTMLAttributes<HTMLInputElement>

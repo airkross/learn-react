@@ -1,0 +1,1 @@
+export type CustomTextareaType = React.TextareaHTMLAttributes<HTMLTextAreaElement>

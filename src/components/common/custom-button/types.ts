@@ -1,0 +1,1 @@
+export type CustomButtonType = React.ButtonHTMLAttributes<HTMLButtonElement>

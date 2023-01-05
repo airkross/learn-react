@@ -1,0 +1,1 @@
+export type CustomSeparator = React.HTMLAttributes<HTMLHRElement>
