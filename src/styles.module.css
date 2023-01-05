@@ -1,0 +1,10 @@
+.container {
+    max-width: 1110px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.createPostButton {
+    margin: 16px 0;
+}

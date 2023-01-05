@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
 
 import PostList from './components/app-components/post-list';
-import CreatePostForm from './components/app-components/create-post-form';
-import CustomSeparator from './components/common/custom-separator';
 import { IProps as ICustomSelect } from './components/common/custom-select/types'
 import PostFilter from './components/app-components/post-filter';
+import CreatePostModal from './components/app-components/create-post-modal';
+import CustomButton from './components/common/custom-button';
+import styles from './styles.module.css'
 
 // Fake Data (Mock Data)
 export interface IPostItem {
@@ -27,16 +28,6 @@ const responseData: IPostListItems = {
     {
       id: 3,
       title: 'яя Учу React',
-      description: 'React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.',
-    },
-    {
-      id: 2,
-      title: 'вв Учу React',
-      description: 'React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.',
-    },
-    {
-      id: 4,
-      title: 'бб Учу React',
       description: 'React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.',
     },
   ]
@@ -66,6 +57,8 @@ const options: ICustomSelect['options'] = [
 function App() {
   const [ posts, setPosts ] = useState<IPostListItems['posts']>(responseData.posts)
   const [ filter, setFilter ] = useState({ sort: '', query: '' })
+  const [ shownModal, setIsShownModal ] = useState(false)
+
 
   const sortedPosts = useMemo(() => {
     if(!filter.sort) {
@@ -89,7 +82,8 @@ function App() {
     return sortedPosts?.filter((post) => post.title.toLocaleLowerCase().includes(filter.query.toLocaleLowerCase()))
   }, [filter.query, sortedPosts])
 
-  const handleSubmitAddPostForm = (post: IPostItem) => {
+  const handleCreatePost = (post: IPostItem) => {
+    setIsShownModal(false)
     setPosts([...posts, post])
   }
 
@@ -99,11 +93,17 @@ function App() {
 
   return (
     <React.StrictMode>
-      <div className="App">
-          <CreatePostForm 
-            whenSubmit={handleSubmitAddPostForm}
+      <div className={styles.container}>
+          <div className={styles.createPostButton}>
+            <CustomButton onClick={() => setIsShownModal(true)}>
+              Создать пост
+            </CustomButton>
+          </div>
+          <CreatePostModal 
+            isShownModal={shownModal}
+            setIsShownModal={setIsShownModal}
+            whenCreatePost={handleCreatePost}
           />
-          <CustomSeparator />
           <PostFilter
             filter={filter}
             setFilter={setFilter}

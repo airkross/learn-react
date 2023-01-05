@@ -19,7 +19,7 @@ const PostList: FC<IProps> = ({ posts, whenClickDeletePost }) => {
   }
 
   return (
-    <div className={styles.postList}>
+    <div>
         {
           posts.map(({ id, title, description }) => (
             <div className={styles.post} key={id}>
