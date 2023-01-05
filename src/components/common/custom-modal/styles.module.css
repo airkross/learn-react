@@ -1,0 +1,22 @@
+.customModal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: var(--globalBlackColorTransparency);
+    display: none;
+}
+
+.customModal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customModalContent {
+    min-width: 300px;
+    background-color: var(--globalWhiteColor);
+    padding: 16px 32px;
+    border-radius: var(--border-radius);
+}
