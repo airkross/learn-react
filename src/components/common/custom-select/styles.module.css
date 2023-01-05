@@ -1,0 +1,3 @@
+.customSelect:required:invalid {
+    color: var(--globalGreyColor);
+}
