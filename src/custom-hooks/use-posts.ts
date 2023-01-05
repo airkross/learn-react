@@ -6,10 +6,10 @@ export const useSortedPosts = (posts: IPostListItems['posts'], sort: string) => 
     return useMemo(() => {
         switch(sort) {
           case optionValues.ID: {
-            return [...posts].sort((a, b) => a[sort as 'id'] - b[sort as 'id'])
+            return [...posts].sort((a, b) => a[sort as optionValues.ID] - b[sort as optionValues.ID])
           }
           case optionValues.TITLE: {
-            return [...posts].sort((a, b) => a[sort as 'title'].localeCompare(b[sort as 'title']))
+            return [...posts].sort((a, b) => a[sort as optionValues.TITLE].localeCompare(b[sort as optionValues.TITLE]))
           }
           default: {
             return posts
