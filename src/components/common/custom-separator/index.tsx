@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import styles from './styles.module.css'
 
-const CustomSeparator: FC = () => {
+const CustomSeparator: FC = (props) => {
   return (
-   <hr className={styles.customSeparator} />
+   <hr {...props} className={styles.customSeparator} />
   )
 }
 
