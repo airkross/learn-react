@@ -1,9 +1,20 @@
 .infoBox {
     width: 100%;
-    border: 2px solid var(--globalGreenColorDark);
     border-radius: var(--border-radius);
     min-height: 40px;
     padding: 8px 16px;
+}
+
+.infoBox.success {
+    border: 2px solid var(--globalGreenColorDark);
+}
+
+.infoBox.warning {
+    border: 2px solid var(--globalYellowColor);
+}
+
+.infoBox.danger {
+    border: 2px solid var(--globalRedColor);
 }
 
 .gap {
