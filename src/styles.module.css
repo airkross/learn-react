@@ -8,3 +8,13 @@
 .createPostButton {
     margin: 16px 0;
 }
+
+.errorBlock {
+    margin-bottom: 16px;
+}
+
+.loader {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}

@@ -9,6 +9,10 @@ import styles from './styles.module.css'
 import { useSortedAndSerchedPosts } from './custom-hooks/use-posts';
 import { services } from './api/services';
 import { IPostItem, PostListItemsType } from './api/bff/post-bff';
+import CustomLoader from './components/common/custom-loader';
+import { useFetching } from './custom-hooks/use-fetching';
+import InfoBox from './components/common/info-box';
+import { Variants } from './components/common/info-box/constants';
 
 export const enum optionValues {
   EMPTY = '',
@@ -36,6 +40,10 @@ function App() {
   const [ filter, setFilter ] = useState({ sort: '', query: '' })
   const [ shownModal, setIsShownModal ] = useState(false)
   const sortedAndSerchedPosts = useSortedAndSerchedPosts(posts, filter.sort, filter.query)
+  const [ fetchPosts, isPostsLoading, responseError ] = useFetching(async () => {
+    const { data: posts } = await services['postsSeviceBff'].getPosts()
+    setPosts(posts)
+  })
 
   const handleCreatePost = (post: IPostItem) => {
     setIsShownModal(false)
@@ -44,18 +52,6 @@ function App() {
 
   const handleClickDeletePost = (postId: IPostItem['id']) => {
     setPosts(posts.filter((post) => post.id !== postId))
-  }
-
-  async function fetchPosts() {
-    try {
-      const { data } = await services['postsSeviceBff'].getPosts()
-      setPosts(data)
-    } catch(error) {
-      /**
-       * @todo Порефачить обработку ошибок + создать кастомный алерт
-       */
-      console.error(error)
-    }
   }
 
   useEffect(() => {
@@ -80,10 +76,18 @@ function App() {
             setFilter={setFilter}
             options={options}
           />
-          <PostList 
-            posts={sortedAndSerchedPosts}
-            whenClickDeletePost={handleClickDeletePost}
-          />
+          {
+            responseError && (
+              <div className={styles.errorBlock}>
+                <InfoBox info={['Произошла ошибка:', `${responseError}`]} variants={Variants.DANGER}/>
+              </div>
+            )
+          }
+          {
+            isPostsLoading
+              ? <div className={styles.loader}><CustomLoader /></div>
+              : <PostList posts={sortedAndSerchedPosts} whenClickDeletePost={handleClickDeletePost} />
+          }
       </div>
     </React.StrictMode>
   );

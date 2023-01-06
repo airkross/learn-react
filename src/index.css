@@ -24,6 +24,12 @@ body {
   --globalBlackColor: rgb(0, 0, 0);
   --globalBlackColorTransparency: rgba(0, 0, 0, .5);
 
+  /* Red colors */
+  --globalRedColor: rgb(255, 103, 103);
+
+  /* Yellow colors */
+  --globalYellowColor: rgb(255, 247, 24);
+
   /* Grey colors */
   --globalGreyColor: rgb(128, 128, 128);
 
