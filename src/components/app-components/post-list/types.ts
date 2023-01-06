@@ -1,7 +1,7 @@
 import { IProps as IPostItemProps } from "@components/app-components/post-item/types"
-import { IPostListItems } from "~/App"
+import { PostListItemsType } from "~/api/bff/post-bff"
 
 export interface IProps {
-    posts: IPostListItems['posts']
+    posts: PostListItemsType
     whenClickDeletePost: IPostItemProps['whenClickDeletePost']
 }

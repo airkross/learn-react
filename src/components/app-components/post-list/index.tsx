@@ -21,12 +21,12 @@ const PostList: FC<IProps> = ({ posts, whenClickDeletePost }) => {
   return (
     <div>
         {
-          posts.map(({ id, title, description }) => (
+          posts.map(({ id, title, body }) => (
             <div className={styles.post} key={id}>
                 <PostItem
                     id={id}
                     title={title}
-                    description={description}
+                    body={body}
                     whenClickDeletePost={whenClickDeletePost}
                 />
             </div>

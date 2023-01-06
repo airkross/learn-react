@@ -1,5 +1,4 @@
 import { FC, useState } from 'react'
-import { IPostItem } from '~/App'
 
 import CustomForm from '../../common/custom-form'
 import CustomButton from '../../common/custom-button'
@@ -9,6 +8,7 @@ import CustomFormField from '../../common/custom-form/components/custom-form-fie
 import { IProps } from './types'
 import styles from './styles.module.css'
 import { getInitialValue } from './constants'
+import { IPostItem } from '~/api/bff/post-bff'
 
 const CreatePostForm: FC<IProps> = ({ whenSubmit }) => {
     const [ formValues, setValues ] = useState<IPostItem>(getInitialValue())
@@ -40,8 +40,8 @@ const CreatePostForm: FC<IProps> = ({ whenSubmit }) => {
                 >
                     <CustomTextarea
                         placeholder={'Введите описание'}
-                        value={formValues.description}
-                        onChange={(e) => setValues({...formValues, description: e.target.value})} 
+                        value={formValues.body}
+                        onChange={(e) => setValues({...formValues, body: e.target.value})} 
                     />
                 </CustomFormField>
                 <CustomButton>

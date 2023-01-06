@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PostList from './components/app-components/post-list';
 import { IProps as ICustomSelect } from './components/common/custom-select/types'
@@ -7,32 +7,8 @@ import CreatePostModal from './components/app-components/create-post-modal';
 import CustomButton from './components/common/custom-button';
 import styles from './styles.module.css'
 import { useSortedAndSerchedPosts } from './custom-hooks/use-posts';
-
-// Fake Data (Mock Data)
-export interface IPostItem {
-  id: number
-  title: string
-  description: string
-}
-
-export interface IPostListItems {
-  posts: Array<IPostItem>
-}
-
-const responseData: IPostListItems = {
-  posts: [
-    {
-      id: 1,
-      title: 'аа Учу React',
-      description: 'React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.',
-    },
-    {
-      id: 3,
-      title: 'яя Учу React',
-      description: 'React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.',
-    },
-  ]
-}
+import { services } from './api/services';
+import { IPostItem, PostListItemsType } from './api/bff/post-bff';
 
 export const enum optionValues {
   EMPTY = '',
@@ -56,7 +32,7 @@ const options: ICustomSelect['options'] = [
 ]
 
 function App() {
-  const [ posts, setPosts ] = useState<IPostListItems['posts']>(responseData.posts)
+  const [ posts, setPosts ] = useState<PostListItemsType>([])
   const [ filter, setFilter ] = useState({ sort: '', query: '' })
   const [ shownModal, setIsShownModal ] = useState(false)
   const sortedAndSerchedPosts = useSortedAndSerchedPosts(posts, filter.sort, filter.query)
@@ -69,6 +45,22 @@ function App() {
   const handleClickDeletePost = (postId: IPostItem['id']) => {
     setPosts(posts.filter((post) => post.id !== postId))
   }
+
+  async function fetchPosts() {
+    try {
+      const { data } = await services['postsSeviceBff'].getPosts()
+      setPosts(data)
+    } catch(error) {
+      /**
+       * @todo Порефачить обработку ошибок + создать кастомный алерт
+       */
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
 
   return (
     <React.StrictMode>

@@ -1,9 +1,9 @@
-import { IPostItem } from "~/App"
+import { IPostItem } from "~/api/bff/post-bff"
 
 export const getInitialValue = (): IPostItem => {
     return {
         title: '',
-        description: '',
+        body: '',
         id: new Date().valueOf()
     }
 }
