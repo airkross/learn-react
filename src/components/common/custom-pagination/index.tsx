@@ -3,7 +3,7 @@ import { IProps } from './types'
 import styles from './styles.module.css'
 import { getPagesArray } from './helpers/get-page-array'
 
-const CustomPagination: FC<IProps> = ({ totalPages, perPages, whenChangePage }) => {
+const CustomPagination: FC<IProps> = ({ totalPages, currentPage, whenChangePage }) => {
 
     return (
         <div className={styles.customPagination}>
@@ -11,7 +11,7 @@ const CustomPagination: FC<IProps> = ({ totalPages, perPages, whenChangePage }) 
                 getPagesArray(totalPages).map((page) => (
                     <div
                         key={page}
-                        className={[styles.page, perPages === page 
+                        className={[styles.page, currentPage === page 
                             ? styles.currentPage 
                             : ''
                         ].join(' ')}

@@ -42,14 +42,14 @@ function App() {
   const [ posts, setPosts ] = useState<PostListItemsType>([])
   const [ filter, setFilter ] = useState({ sort: '', query: '' })
   const [ shownModal, setIsShownModal ] = useState(false)
-  const [ perPage, setPerPage ] = useState<number>(1)
+  const [ currentPage, setCurrentPage ] = useState<number>(1)
   const [ totalPages, setTotalPages ] = useState<number>(0)
 
   const sortedAndSerchedPosts = useSortedAndSerchedPosts(posts, filter.sort, filter.query)
   const [ fetchPosts, isPostsLoading, responseError ] = useFetching(async () => {
     const response = await services['postsSeviceBff'].getPosts({
       _limit: limit,
-      _page: perPage,
+      _page: currentPage,
     })
     const { data: posts } = response
     const totalCount = (response.headers as { 'x-total-count'?: string })['x-total-count']
@@ -71,12 +71,12 @@ function App() {
   }
 
   const handleChangePage = (page: number) => {
-    setPerPage(page)
+    setCurrentPage(page)
   }
 
   useEffect(() => {
     fetchPosts()
-  }, [perPage])
+  }, [currentPage])
 
   return (
     <React.StrictMode>
@@ -109,7 +109,7 @@ function App() {
               : <PostList posts={sortedAndSerchedPosts} whenClickDeletePost={handleClickDeletePost} />
           }
           <CustomPagination 
-            perPages={perPage}
+            currentPage={currentPage}
             totalPages={totalPages}
             whenChangePage={handleChangePage}
           />

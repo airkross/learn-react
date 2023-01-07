@@ -1,6 +1,6 @@
 export interface IProps {
     totalPages: number
-    perPages: number
+    currentPage: number
 
     whenChangePage: (page: number) => void
 }
