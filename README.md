@@ -60,7 +60,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ```
 ├── [component-name]
     ├── constants.ts
-    ├── helpers.ts
+    ├── helpers
+        └── *.ts
     ├── index.tsx
     ├── styles.module.css
     ├── types.ts
