@@ -66,5 +66,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
     ├── types.ts
     ├── components
     └── [component-name]
-        ├── *
+        ├── duplicate [component-name] structure
 ```
