@@ -39,6 +39,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Project stucture
 
+```
 ├── api
 │   ├── base // базовые предподготовки
 │   ├── bff // backend for frontend
@@ -53,3 +54,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 │   └── *.ts
 └── types // типы
     └── index.d.ts
+```
