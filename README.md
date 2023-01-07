@@ -62,6 +62,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
     ├── constants.ts
     ├── helpers
         └── *.ts
+    ├── custom-hooks
+        └── use-*.ts
     ├── index.tsx
     ├── styles.module.css
     ├── types.ts
