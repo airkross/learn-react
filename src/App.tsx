@@ -13,6 +13,9 @@ import CustomLoader from './components/common/custom-loader';
 import { useFetching } from './custom-hooks/use-fetching';
 import InfoBox from './components/common/info-box';
 import { Variants } from './components/common/info-box/constants';
+import { getPagesCount } from './components/common/custom-pagination/helpers/get-pages-count';
+import CustomPagination from './components/common/custom-pagination';
+import { limit } from './constants';
 
 export const enum optionValues {
   EMPTY = '',
@@ -39,9 +42,22 @@ function App() {
   const [ posts, setPosts ] = useState<PostListItemsType>([])
   const [ filter, setFilter ] = useState({ sort: '', query: '' })
   const [ shownModal, setIsShownModal ] = useState(false)
+  const [ perPage, setPerPage ] = useState<number>(1)
+  const [ totalPages, setTotalPages ] = useState<number>(0)
+
   const sortedAndSerchedPosts = useSortedAndSerchedPosts(posts, filter.sort, filter.query)
   const [ fetchPosts, isPostsLoading, responseError ] = useFetching(async () => {
-    const { data: posts } = await services['postsSeviceBff'].getPosts()
+    const response = await services['postsSeviceBff'].getPosts({
+      _limit: limit,
+      _page: perPage,
+    })
+    const { data: posts } = response
+    const totalCount = (response.headers as { 'x-total-count'?: string })['x-total-count']
+
+    if (totalCount) {
+      setTotalPages(getPagesCount(Number(totalCount), limit))
+    }
+
     setPosts(posts)
   })
 
@@ -54,9 +70,13 @@ function App() {
     setPosts(posts.filter((post) => post.id !== postId))
   }
 
+  const handleChangePage = (page: number) => {
+    setPerPage(page)
+  }
+
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [perPage])
 
   return (
     <React.StrictMode>
@@ -88,6 +108,11 @@ function App() {
               ? <div className={styles.loader}><CustomLoader /></div>
               : <PostList posts={sortedAndSerchedPosts} whenClickDeletePost={handleClickDeletePost} />
           }
+          <CustomPagination 
+            perPages={perPage}
+            totalPages={totalPages}
+            whenChangePage={handleChangePage}
+          />
       </div>
     </React.StrictMode>
   );

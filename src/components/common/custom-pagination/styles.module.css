@@ -1,0 +1,18 @@
+.customPagination {
+    display: flex;
+}
+
+.page {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--globalGreenColorMedium);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.page.currentPage {
+    border: 2px solid var(--globalGreenColorDark)
+}

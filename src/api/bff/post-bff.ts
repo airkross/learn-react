@@ -98,10 +98,14 @@ export class Api {
         this.http = new HttpClient(axios)
     }
 
-    getPosts(params: RequestParams = {}) {
+    getPosts(query?: {
+        _limit: number
+        _page: number
+    }, params: RequestParams = {}) {
         return this.http.request<PostListItemsType, IStatus>({
             path: '/posts',
             method: 'GET',
+            query: query,
             format: 'json',
             ...params, 
         })

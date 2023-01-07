@@ -36,7 +36,7 @@ body {
   /* Green colors */
   --globalGreenColorDark: rgb(113, 167, 113);
   --globalGreenColorMedium: rgb(182, 210, 182);
-  --globalGreenColorLight: rgb(248, 255, 248);
+  --globalGreenColorLight: rgb(238, 255, 238);
 
   /* z-layers */
   --z-modal: 100;
