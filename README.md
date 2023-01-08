@@ -71,3 +71,21 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
     └── [component-name]
         ├── duplicate [component-name] structure
 ```
+
+### Pages structure
+
+```
+pages
+└──[page-name]
+        ├── constants.ts
+        ├── helpers
+            └── *.ts
+        ├── custom-hooks
+            └── use-*.ts
+        ├── index.tsx
+        ├── styles.module.css
+        ├── types.ts
+        ├── components
+        └── [component-name]
+            ├── duplicate [component-name] structure
+```
