@@ -25,8 +25,8 @@ const InfoBox: FC<IProps> = ({ info, variants }) => {
     return (
       <div className={classes.join(' ')}>
         {
-          info.map((infoItem) => (
-            <div>{infoItem}</div>
+          info.map((infoItem, index) => (
+            <div key={index}>{infoItem}</div>
           ))
         }
       </div>

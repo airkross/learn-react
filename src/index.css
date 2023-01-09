@@ -22,16 +22,23 @@ body {
 
   /* Black colors*/
   --globalBlackColor: rgb(0, 0, 0);
+  --globalBlackMedium: rgb(32, 35, 42);
   --globalBlackColorTransparency: rgba(0, 0, 0, .5);
 
   /* Red colors */
-  --globalRedColor: rgb(255, 103, 103);
+  --globalRedColor: rgb(245, 198, 203);
+
+  /* Blue colors */
+  --globalBlueColorLight: rgb(97, 218, 251);
+  --globalBlueColorMeduim: rgb(0, 145, 185);
+  --globalBlueColorDark: rgb(0, 111, 142);
 
   /* Yellow colors */
-  --globalYellowColor: rgb(255, 247, 24);
+  --globalYellowColor: rgb(255, 238, 186);
 
   /* Grey colors */
   --globalGreyColor: rgb(128, 128, 128);
+  --globalGreyColorLight: rgb(212, 212, 212);
 
   /* Green colors */
   --globalGreenColorDark: rgb(113, 167, 113);

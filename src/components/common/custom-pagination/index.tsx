@@ -11,8 +11,8 @@ const CustomPagination: FC<IProps> = ({ totalPages, currentPage, whenChangePage 
                 getPagesArray(totalPages).map((page) => (
                     <div
                         key={page}
-                        className={[styles.page, currentPage === page 
-                            ? styles.currentPage 
+                        className={[styles.page, currentPage === page
+                            ? styles.currentPage
                             : ''
                         ].join(' ')}
                         onClick={() => whenChangePage(page)}
