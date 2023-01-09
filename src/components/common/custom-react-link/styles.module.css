@@ -1,0 +1,10 @@
+.customReactLink {
+    display: inline-block;
+    color: var(--globalBlueColorMeduim);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.customReactLink:hover {
+    color: var(--globalBlueColorDark);
+}
