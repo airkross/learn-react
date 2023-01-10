@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import CustomReactNavLink from '../../../../components/common/custom-react-nav-link'
+import CustomReactNavLink from '../custom-react-nav-link'
 import { menuItems } from './constants'
 import styles from './styles.module.css'
 

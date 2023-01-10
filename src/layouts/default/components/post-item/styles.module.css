@@ -7,3 +7,7 @@
     width: 100%;
     padding: 16px;
 }
+
+.postItemContent {
+    margin-right: 16px;
+}

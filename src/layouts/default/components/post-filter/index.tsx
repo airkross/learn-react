@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import CustomInput from '../../common/custom-input'
-import CustomSelect from '../../common/custom-select'
+import CustomInput from '../../../../components/common/custom-input'
+import CustomSelect from '../../../../components/common/custom-select'
 import { IProps } from './types'
 import styles from './styles.module.css'
 

@@ -46,7 +46,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 │   ├── services.ts
 │   └── sevices // api сервисы
 ├── components
-│   ├── app-components // компоненты под бизнес логику
 │   └── common // преиспользуемые компоненты
 ├── custom-hooks // кастомные хуки
 │   └── use-*.ts
@@ -69,7 +68,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
     ├── types.ts
     ├── components
     └── [component-name]
-        ├── duplicate [component-name] structure
+        └── duplicate [component-name] structure
 ```
 
 ### Pages structure
@@ -87,5 +86,5 @@ pages
         ├── types.ts
         ├── components
         └── [component-name]
-            ├── duplicate [component-name] structure
+            └── duplicate [component-name] structure
 ```

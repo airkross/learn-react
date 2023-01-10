@@ -4,7 +4,7 @@ import { IProps } from './types'
 import styles from './styles.module.css';
 
 import PostItem from '../post-item';
-import InfoBox from '../../common/info-box';
+import InfoBox from '../../../../components/common/info-box';
 
 
 const PostList: FC<IProps> = ({ posts, whenClickDeletePost }) => {

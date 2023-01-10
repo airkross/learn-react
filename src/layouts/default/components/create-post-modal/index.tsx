@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import CustomModal from '../../common/custom-modal'
+import CustomModal from '../../../../components/common/custom-modal'
 
 import CreatePostForm from '../create-post-form'
 import { IPorps } from './types'
