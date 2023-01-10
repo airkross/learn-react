@@ -4,9 +4,9 @@ import { useSortedAndSerchedPosts } from '../../custom-hooks/use-posts';
 import { useFetching } from '../../custom-hooks/use-fetching';
 import { services } from '../../api/services';
 
-import PostList from '../../layouts/default/components/post-list';
-import PostFilter from '../../layouts/default/components/post-filter';
-import CreatePostModal from '../../layouts/default/components/create-post-modal';
+import PostList from './components/post-list';
+import PostFilter from './components/post-filter';
+import CreatePostModal from './components/create-post-modal';
 import CustomButton from '../../components/common/custom-button';
 import { IPostItem, PostListItemsType } from '../../api/bff/post-bff';
 import CustomLoader from '../../components/common/custom-loader';
