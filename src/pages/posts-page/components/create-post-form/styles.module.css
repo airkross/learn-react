@@ -3,3 +3,7 @@
     width: 100%;
     margin: 32px auto;
 }
+
+.errorInfo {
+    margin-bottom: 16px;
+}

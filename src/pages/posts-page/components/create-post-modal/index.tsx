@@ -5,14 +5,16 @@ import CreatePostForm from '../create-post-form'
 import { IPorps } from './types'
 import styles from './styles.module.css'
 
-const CreatePostModal: FC<IPorps> = ({ isShownModal, setIsShownModal, whenCreatePost }) => {
+const CreatePostModal: FC<IPorps> = ({ isShownModal, isLoading, error, setIsShownModal, whenCreatePost }) => {
   return (
         <CustomModal
             isShownModal={isShownModal}
+            isLoading={isLoading}
             setIsShownModal={setIsShownModal}
         >
             <div className={styles.createPostModal}>
-                <CreatePostForm 
+                <CreatePostForm
+                    error={error}
                     whenSubmit={whenCreatePost}
                 />
             </div>

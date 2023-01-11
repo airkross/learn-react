@@ -18,8 +18,6 @@ import CustomPagination from '../../components/common/custom-pagination';
 import { limit, options } from './constants';
 import styles from './styles.module.css'
 
-
-
 function PostsPage() {
     const [posts, setPosts] = useState<PostListItemsType>([])
     const [filter, setFilter] = useState({ sort: '', query: '' })
@@ -28,7 +26,7 @@ function PostsPage() {
     const [totalPages, setTotalPages] = useState<number>(0)
 
     const sortedAndSerchedPosts = useSortedAndSerchedPosts(posts, filter.sort, filter.query)
-    const [fetchPosts, isPostsLoading, responseError] = useFetching(async () => {
+    const [fetchPosts, isPostsLoading, fetchPostsError] = useFetching(async () => {
         const response = await services['postsSeviceBff'].getPosts({
             _limit: limit,
             _page: currentPage,
@@ -42,10 +40,20 @@ function PostsPage() {
 
         setPosts(posts)
     })
+    const [createPost, isCreatePostsLoading, createPostError] = useFetching(async ({ body, title }: IPostItem) => {
+        await services['postsSeviceBff'].createPost({
+            userId: '1',
+            body,
+            title,
+        })
+        if(!createPostError) {
+            await fetchPosts()
+            setIsShownModal(false)
+        }
+    })
 
     const handleCreatePost = (post: IPostItem) => {
-        setIsShownModal(false)
-        setPosts([...posts, post])
+        createPost(post)
     }
 
     const handleClickDeletePost = (postId: IPostItem['id']) => {
@@ -69,6 +77,8 @@ function PostsPage() {
             </div>
             <CreatePostModal
                 isShownModal={shownModal}
+                isLoading={isCreatePostsLoading}
+                error={createPostError}
                 setIsShownModal={setIsShownModal}
                 whenCreatePost={handleCreatePost}
             />
@@ -78,9 +88,9 @@ function PostsPage() {
                 options={options}
             />
             {
-                responseError && (
+                fetchPostsError && (
                     <div className={styles.errorBlock}>
-                        <InfoBox info={['Произошла ошибка:', `${responseError}`]} variants={Variants.DANGER} />
+                        <InfoBox info={['Произошла ошибка:', `${fetchPostsError}`]} variants={Variants.DANGER} />
                     </div>
                 )
             }

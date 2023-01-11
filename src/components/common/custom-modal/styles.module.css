@@ -20,3 +20,41 @@
     padding: 16px 32px;
     border-radius: var(--border-radius);
 }
+
+.customModalContent.loading {
+    position: relative;
+}
+
+.customModalContent.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.customModalContent.loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px dashed var(--globalGreenColorDark);
+    animation: rotate 2s infinite linear; 
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

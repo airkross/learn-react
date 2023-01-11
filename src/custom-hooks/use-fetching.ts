@@ -1,14 +1,16 @@
 import { useState } from "react"
 import { AxiosError } from 'axios'
 
-export const useFetching = (callback: () => Promise<void> | void): [() => Promise<void>, Boolean, string] => {
-    const [isLoading, setIsLoading] = useState<Boolean>(false)
-    const [error, setError] = useState('')
+type Args = Array<any>
 
-    const fetching = async () => {
+export const useFetching = (callback: (...args: Args) => Promise<void>): [(...args: Args) => Promise<void>, boolean, string] => {
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string>('')
+
+    const fetching = async (...args: Args) => {
         try {
             setIsLoading(true)
-            await callback()
+            await callback(...args)
         } catch (error) {
             setError((error as AxiosError).message)
         } finally {

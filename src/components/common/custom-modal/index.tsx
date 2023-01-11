@@ -3,20 +3,27 @@ import { FC } from 'react'
 import styles from './styles.module.css'
 import { IProps } from './types'
 
-const CustomModal: FC<IProps> = ({ children, isShownModal, setIsShownModal }) => {
-    const classes = [styles.customModal]
+const CustomModal: FC<IProps> = ({ children, isShownModal, isLoading = false, setIsShownModal }) => {
+    const rootClasses = [styles.customModal]
+    const contentClasses = [styles.customModalContent]
 
-    if(isShownModal) {
-        classes.push( styles.active)
+    if (isShownModal) {
+        rootClasses.push(styles.active)
+    }
+
+    if (isLoading) {
+        contentClasses.push(styles.loading)
     }
 
     return (
-        <div className={classes.join(' ')}
-            onClick={() => setIsShownModal(false)}    
+        <div className={rootClasses.join(' ')}
+            onClick={() => setIsShownModal(false)}
         >
-            <div className={styles.customModalContent} onClick={(e) => e.stopPropagation()}>
-                { children }
-            </div>
+            {
+                <div className={contentClasses.join(' ')} onClick={(e) => e.stopPropagation()}>
+                    {children}
+                </div>
+            }
         </div>
     )
 }
