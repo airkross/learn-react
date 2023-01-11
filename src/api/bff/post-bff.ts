@@ -110,6 +110,23 @@ export class Api {
             ...params, 
         })
     }
+
+    createPost(body: ICreatePostRequest, params: RequestParams = {}) {
+        return this.http.request<IPostItem, IStatus>({
+            path: '/posts',
+            method: 'POST',
+            body: body,
+            type: ContentType.Json,
+            format: "json",
+            ...params,
+        })
+    }
+}
+
+export interface ICreatePostRequest {
+    userId: string
+    body: string
+    title: string
 }
 
 export type PostListItemsType = Array<IPostItem>
