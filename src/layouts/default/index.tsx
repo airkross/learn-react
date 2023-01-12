@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import NavigationMenu from './components/navigation-menu';
 import { routes } from './constants';
@@ -17,6 +17,7 @@ const DefaultLayout: FC = () => {
                             <Route key={index} {...route} />
                         ))
                     }
+                    {/* <Route path="/*" element={<Navigate to="/posts" replace />} /> */}
                 </Routes>
             </div>
         </BrowserRouter>

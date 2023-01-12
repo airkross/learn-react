@@ -6,9 +6,12 @@ import ErrorPage from '../error'
 
 export const routes: Array<RouteProps> = [
     {
+        path: '/*',
+        element: <ErrorPage />,
+    },
+    {
         path: "/",
         element: <HomePage />,
-        errorElement: <ErrorPage />,
     },
     {
         path: "/posts",
