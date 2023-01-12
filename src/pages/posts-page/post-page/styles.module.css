@@ -1,0 +1,23 @@
+.container {
+    max-width: 1110px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+.loader {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.comment {
+    border: 2px solid var(--globalGreenColorDark);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.title {
+    margin-bottom: 16px;
+}

@@ -76,6 +76,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ```
 pages
 └──[page-name]
+        ├── [page-name]
+            └── duplicate [page-name] structure
         ├── constants.ts
         ├── helpers
             └── *.ts

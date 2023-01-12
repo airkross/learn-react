@@ -7,7 +7,7 @@ import PostItem from '../post-item';
 import InfoBox from '../../../../components/common/info-box';
 
 
-const PostList: FC<IProps> = ({ posts, whenClickDeletePost }) => {
+const PostList: FC<IProps> = ({ posts, whenClickOpenPost, whenClickDeletePost }) => {
   if (!posts.length) {
     return (
       <div className={styles.infoBlock}>
@@ -27,6 +27,7 @@ const PostList: FC<IProps> = ({ posts, whenClickDeletePost }) => {
                     id={id}
                     title={title}
                     body={body}
+                    whenClickOpenPost={whenClickOpenPost}
                     whenClickDeletePost={whenClickDeletePost}
                 />
             </div>

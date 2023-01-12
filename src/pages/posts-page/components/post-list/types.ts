@@ -3,5 +3,6 @@ import { PostListItemsType } from "~/api/bff/post-bff"
 
 export interface IProps {
     posts: PostListItemsType
+    whenClickOpenPost: IPostItemProps['whenClickOpenPost']
     whenClickDeletePost: IPostItemProps['whenClickDeletePost']
 }

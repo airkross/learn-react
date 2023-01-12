@@ -111,6 +111,15 @@ export class Api {
         })
     }
 
+    getPost(id: string, params: RequestParams = {}) {
+        return this.http.request<IPostItem, IStatus>({
+            path: `/posts/${id}`,
+            method: 'GET',
+            format: 'json',
+            ...params, 
+        })
+    }
+
     createPost(body: ICreatePostRequest, params: RequestParams = {}) {
         return this.http.request<IPostItem, IStatus>({
             path: '/posts',
@@ -121,6 +130,28 @@ export class Api {
             ...params,
         })
     }
+
+    getComments(query?: {
+        postId: string
+    }, params: RequestParams = {}) {
+        return this.http.request<PostCommentsItemsType, IStatus>({
+            path: `/comments`,
+            method: 'GET',
+            format: 'json',
+            query: query,
+            ...params, 
+        })
+    }
+}
+
+export type PostCommentsItemsType = Array<IPostComment>
+
+export interface IPostComment {
+    id: number
+    email: string
+    name: string
+    postId: number
+    body: string
 }
 
 export interface ICreatePostRequest {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 import { useSortedAndSerchedPosts } from '../../custom-hooks/use-posts';
 import { useFetching } from '../../custom-hooks/use-fetching';
@@ -25,6 +26,8 @@ function PostsPage() {
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [totalPages, setTotalPages] = useState<number>(0)
 
+    const router = useNavigate()
+
     const sortedAndSerchedPosts = useSortedAndSerchedPosts(posts, filter.sort, filter.query)
     const [fetchPosts, isPostsLoading, fetchPostsError] = useFetching(async () => {
         const response = await services['postsSeviceBff'].getPosts({
@@ -46,7 +49,7 @@ function PostsPage() {
             body,
             title,
         })
-        if(!createPostError) {
+        if (!createPostError) {
             await fetchPosts()
             setIsShownModal(false)
         }
@@ -58,6 +61,10 @@ function PostsPage() {
 
     const handleClickDeletePost = (postId: IPostItem['id']) => {
         setPosts(posts.filter((post) => post.id !== postId))
+    }
+
+    const handleClickOpenPost = (postId: IPostItem['id']) => {
+        router(`/posts/${postId}`)
     }
 
     const handleChangePage = (page: number) => {
@@ -97,7 +104,13 @@ function PostsPage() {
             {
                 isPostsLoading
                     ? <div className={styles.loader}><CustomLoader /></div>
-                    : <PostList posts={sortedAndSerchedPosts} whenClickDeletePost={handleClickDeletePost} />
+                    : (
+                        <PostList
+                            posts={sortedAndSerchedPosts}
+                            whenClickOpenPost={handleClickOpenPost} 
+                            whenClickDeletePost={handleClickDeletePost} 
+                        />
+                    )
             }
             <CustomPagination
                 currentPage={currentPage}
