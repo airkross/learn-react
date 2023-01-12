@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-import { useSortedAndSerchedPosts } from '../../custom-hooks/use-posts';
+import { useSortedAndSerchedPosts } from './custom-hooks/use-posts';
 import { useFetching } from '../../custom-hooks/use-fetching';
 import { services } from '../../api/services';
 

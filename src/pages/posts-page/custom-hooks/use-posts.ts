@@ -2,7 +2,7 @@ import { useMemo } from "react"
 
 import { PostListItemsType } from "@api/bff/post-bff"
 
-import { optionValues } from "../pages/posts-page/constants"
+import { optionValues } from "../constants"
 
 export const useSortedPosts = (posts: PostListItemsType, sort: string) => {
   return useMemo(() => {
