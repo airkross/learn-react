@@ -9,3 +9,17 @@
     min-height: 80px;
     background-color: var(--globalBlackMedium);
 }
+
+.logout {
+    margin-left: auto;
+    color: var(--globalWhiteColor);
+    border: 2px solid var(--globalBlueColorMeduim);
+}
+
+.logout:hover {
+    background: var(--globalBlackMedium);
+}
+
+.logout:active {
+    border: 2px solid var(--globalBlueColorLight);
+}

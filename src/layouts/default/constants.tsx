@@ -1,14 +1,14 @@
-import { RouteProps } from 'react-router-dom'
+import { Navigate, RouteProps } from 'react-router-dom'
 
 import PostPage from '../../pages/posts-page/post-page'
 import HomePage from '../../pages'
 import PostsPage from '../../pages/posts-page'
-import ErrorPage from '../error'
+import LoginPage from '../../pages/login-page'
 
-export const routes: Array<RouteProps> = [
+export const privatRoutes: Array<RouteProps> = [
     {
         path: '/*',
-        element: <ErrorPage />,
+        element:  <Navigate to="/" replace />,
     },
     {
         path: "/",
@@ -22,4 +22,15 @@ export const routes: Array<RouteProps> = [
         path: "/posts/:id",
         element: <PostPage />,
     },
+]
+
+export const publicRoutes: Array<RouteProps> = [
+    {
+        path: '/*',
+        element: <Navigate to="/login" replace />,
+    },
+    {
+        path: '/login',
+        element: <LoginPage />
+    }
 ]

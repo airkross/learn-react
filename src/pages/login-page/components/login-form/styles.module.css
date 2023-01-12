@@ -1,0 +1,13 @@
+.loginForm {
+    max-width: 300px;
+    width: 100%;
+    margin: 32px auto;
+}
+
+.errorInfo {
+    margin-bottom: 16px;
+}
+
+.loginTitle {
+    margin-bottom: 16px;
+}
